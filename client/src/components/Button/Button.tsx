@@ -5,12 +5,14 @@ type Props = {
   onClick: (value: string) => void;
   disabled?: boolean;
   value?: string;
+  text?: string;
 };
 
 export const Button: FC<Props> = ({
   onClick,
   disabled = false,
   value = "",
+  text = "Start",
 }) => {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -23,7 +25,7 @@ export const Button: FC<Props> = ({
       onClick={handleClick}
       disabled={disabled || value === ""}
     >
-      Start
+      {text}
     </ButtonStyled>
   );
 };

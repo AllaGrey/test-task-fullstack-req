@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
+import { sendAllRequests } from "../../utils";
 import { RequestForm } from "../../components/RequestForm";
 import { RequestList } from "../../components/RequestList";
 import { Container } from "./MainPage.styled";
-import { sendAllRequests } from "../../utils";
 
 const MainPage: FC = () => {
   const [requests, setRequests] = useState<string[]>([]);
