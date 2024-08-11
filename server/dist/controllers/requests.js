@@ -15,9 +15,9 @@ const getRequests = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const { limit, interval, index } = req.query;
     const delay = Math.floor(Math.random() * 1000) + 1;
     setTimeout(() => {
-        res.status(200).json({
-            message: `Request ${limit}_${interval}_${index} was completed successfully`,
-        });
+        res
+            .status(200)
+            .json(`Request ${limit}_${interval}_${index} was completed successfully`);
     }, delay);
 });
 exports.getRequestsCtrl = (0, utils_1.CtrlWrapper)(getRequests);

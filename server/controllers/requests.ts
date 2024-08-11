@@ -7,9 +7,9 @@ const getRequests = async (req: Request, res: Response): Promise<void> => {
   const delay = Math.floor(Math.random() * 1000) + 1;
 
   setTimeout(() => {
-    res.status(200).json({
-      message: `Request ${limit}_${interval}_${index} was completed successfully`,
-    });
+    res
+      .status(200)
+      .json(`Request ${limit}_${interval}_${index} was completed successfully`);
   }, delay);
 };
 
