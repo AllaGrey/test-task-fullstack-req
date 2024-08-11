@@ -1,1 +1,1 @@
-export const TOTAL_REQUESTS = 100;
+export const TOTAL_REQUESTS = 1000;
