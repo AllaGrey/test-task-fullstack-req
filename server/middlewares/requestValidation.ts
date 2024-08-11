@@ -8,7 +8,6 @@ export const requestValidation = async (
 ) => {
   const { limit, interval, index } = req.query;
 
-  console.log(req.query);
   if (!limit || !interval || !index) {
     return next(HttpError(400, "Invalid request index"));
   }

@@ -28,8 +28,6 @@ export const RequestForm: FC<Props> = ({ onclick, isLoadingRequest }) => {
     onclick(value);
   };
 
-  console.log(isLoadingRequest);
-
   return (
     <FormStyled>
       <Label>

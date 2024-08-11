@@ -13,7 +13,6 @@ exports.requestValidation = void 0;
 const utils_1 = require("../utils");
 const requestValidation = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { limit, interval, index } = req.query;
-    console.log(req.query);
     if (!limit || !interval || !index) {
         return next((0, utils_1.HttpError)(400, "Invalid request index"));
     }
