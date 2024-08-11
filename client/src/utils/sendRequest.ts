@@ -20,9 +20,9 @@ export const sendRequest = async (
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const { message } = await response.json();
-    console.log("Response received:", message);
-    return message;
+    const result = await response.json();
+    console.log("Response received:", result);
+    return result;
   } catch (error) {
     console.error("Error:", error);
     throw error;

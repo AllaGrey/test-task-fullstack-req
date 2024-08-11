@@ -6,17 +6,26 @@ import { sendAllRequests } from "../../utils";
 
 const MainPage: FC = () => {
   const [requests, setRequests] = useState<string[]>([]);
+  const [isLoadingRequest, setIsLoadingRequest] = useState<boolean>(false);
 
   const handleClick = async (value: string) => {
     console.log("Form submitted:", value);
-    await sendAllRequests(Number(value), (newRequest: string) => {
-      setRequests((prevRequests) => [...prevRequests, newRequest]);
-    });
+
+    try {
+      setIsLoadingRequest(true);
+      await sendAllRequests(Number(value), (newRequest: string) => {
+        setRequests((prevRequests) => [...prevRequests, newRequest]);
+      });
+    } catch (error) {
+      console.error("Error during requests:", error);
+    } finally {
+      setIsLoadingRequest(false);
+    }
   };
 
   return (
     <Container>
-      <RequestForm onclick={handleClick} />
+      <RequestForm onclick={handleClick} isLoadingRequest={isLoadingRequest} />
       <RequestList requests={requests} />
     </Container>
   );

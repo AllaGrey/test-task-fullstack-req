@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { RequestItem } from "../RequestItem";
+import { RequestListStyled } from "./RequestList.styled";
 
 type Props = {
   requests: string[];
@@ -7,11 +8,14 @@ type Props = {
 
 export const RequestList: FC<Props> = ({ requests }) => {
   return (
-    <div>
-      {requests &&
-        requests.map((item, index) => (
-          <RequestItem key={index} item={item} index={index} />
-        ))}
-    </div>
+    <>
+      {requests.length > 0 && (
+        <RequestListStyled>
+          {requests.map((item, index) => (
+            <RequestItem key={index} item={item} index={index} />
+          ))}
+        </RequestListStyled>
+      )}
+    </>
   );
 };

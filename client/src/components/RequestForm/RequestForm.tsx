@@ -5,22 +5,30 @@ import { Button } from "../Button";
 import { ErrorMessage, FormStyled, Label } from "./RequestForm.styled";
 
 type Props = {
-  // onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onclick: (value: string) => void;
-  // value: string;
+  isLoadingRequest: boolean;
 };
 
-export const RequestForm: FC<Props> = ({ onclick }) => {
+export const RequestForm: FC<Props> = ({ onclick, isLoadingRequest }) => {
   const [value, setValue] = useState<string>("");
   const [inputError, setInputError] = useState<string>("");
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     const { error } = inputValueValidation(inputValue);
-    if (error) return setInputError(error);
-    setInputError("");
+    if (error) {
+      setInputError(error);
+    } else {
+      setInputError("");
+    }
     setValue(inputValue);
   };
+
+  const handleClick = () => {
+    onclick(value);
+  };
+
+  console.log(isLoadingRequest);
 
   return (
     <FormStyled>
@@ -32,7 +40,11 @@ export const RequestForm: FC<Props> = ({ onclick }) => {
         />
         {inputError && <ErrorMessage>{inputError}</ErrorMessage>}
       </Label>
-      <Button onClick={onclick} disabled={!!inputError} value={value} />
+      <Button
+        onClick={handleClick}
+        disabled={!!inputError || isLoadingRequest}
+        value={value}
+      />
     </FormStyled>
   );
 };

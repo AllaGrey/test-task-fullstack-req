@@ -41,8 +41,6 @@ type FontSizes = {
 };
 
 type BoxShadow = {
-  card: string;
-  cardHover: string;
   btn: string;
   btnHover: string;
 };
