@@ -1,13 +1,17 @@
 import { FC } from "react";
 import { RequestItem } from "../RequestItem";
 
-export const RequestList: FC = () => {
-  const reqList = Array(1, 2, 3, 4, 5);
+type Props = {
+  requests: string[];
+};
+
+export const RequestList: FC<Props> = ({ requests }) => {
   return (
     <div>
-      {reqList.map((item) => (
-        <RequestItem key={item} />
-      ))}
+      {requests &&
+        requests.map((item, index) => (
+          <RequestItem key={index} item={item} index={index} />
+        ))}
     </div>
   );
 };

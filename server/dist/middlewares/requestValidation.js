@@ -12,11 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.requestValidation = void 0;
 const utils_1 = require("../utils");
 const requestValidation = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const { requestIndex } = req.params;
-    if (!Number.isInteger(parseInt(requestIndex, 10))) {
+    const { limit, interval, index } = req.query;
+    console.log(req.query);
+    if (!limit || !interval || !index) {
         return next((0, utils_1.HttpError)(400, "Invalid request index"));
     }
-    if (Number(requestIndex) > 50) {
+    if (Number(limit) > 50) {
         return next((0, utils_1.HttpError)(429, "Too many requests"));
     }
     next();

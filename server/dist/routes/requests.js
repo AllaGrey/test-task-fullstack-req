@@ -7,5 +7,5 @@ const express_1 = __importDefault(require("express"));
 const requestValidation_1 = require("../middlewares/requestValidation");
 const requests_1 = require("../controllers/requests");
 const requestRouter = express_1.default.Router();
-requestRouter.get("/:requestIndex", requestValidation_1.requestValidation, requests_1.getRequestsCtrl);
+requestRouter.get("/", requestValidation_1.requestValidation, requests_1.getRequestsCtrl);
 exports.default = requestRouter;

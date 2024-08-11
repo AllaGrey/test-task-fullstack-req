@@ -4,6 +4,6 @@ import { getRequestsCtrl } from "../controllers/requests";
 
 const requestRouter = express.Router();
 
-requestRouter.get("/:requestIndex", requestValidation, getRequestsCtrl);
+requestRouter.get("/", requestValidation, getRequestsCtrl);
 
 export default requestRouter;

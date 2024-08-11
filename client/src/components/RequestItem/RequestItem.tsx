@@ -1,5 +1,14 @@
 import { FC } from "react";
 
-export const RequestItem: FC = () => {
-  return <div>RequestItem</div>;
+type Props = {
+  item: string;
+  index: number;
+};
+
+export const RequestItem: FC<Props> = ({ item, index }) => {
+  return (
+    <div>
+      {item} {index}
+    </div>
+  );
 };

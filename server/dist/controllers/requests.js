@@ -12,6 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRequestsCtrl = void 0;
 const utils_1 = require("../utils");
 const getRequests = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.status(200).json("Req successfully");
+    const { limit, interval, index } = req.query;
+    res
+        .status(200)
+        .json(`Request ${limit}_${interval}_${index} was completed successfully`);
 });
 exports.getRequestsCtrl = (0, utils_1.CtrlWrapper)(getRequests);

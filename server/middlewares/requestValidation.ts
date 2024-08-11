@@ -6,11 +6,13 @@ export const requestValidation = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { requestIndex } = req.params;
-  if (!Number.isInteger(parseInt(requestIndex, 10))) {
+  const { limit, interval, index } = req.query;
+
+  console.log(req.query);
+  if (!limit || !interval || !index) {
     return next(HttpError(400, "Invalid request index"));
   }
-  if (Number(requestIndex) > 50) {
+  if (Number(limit) > 50) {
     return next(HttpError(429, "Too many requests"));
   }
   next();
